@@ -3,10 +3,10 @@ Legendre Tucker-rank Reduction(LTR) is an efficient low-rank approximation algor
 
 * Ghalamkari, K., Sugiyama, M. : **Fast Tucker Rank Reduction for Non-Negative Tensors Using Mean-Field Approximation**, NeurIPS 2021 (to appear).
 
-## Requrimetn.
+## Requirements
 LTR is implemented in Julia 1.6.1.
 We need only `LTR.jl` to run LTR.
-`TensorToolBox` and `InvertedIndices` are required.
+`TensorToolBox` and `InvertedIndices` have to be installed in Julia.
 All other files are for experiments in our paper.
 
 ## Usage
@@ -16,7 +16,7 @@ On the command line, we can use the algorithm as follows.
 $ julia
 julia> include("LTR.jl")
 julia> X = rand(5,5,5)
-julia> Y = TLrRR(X, [2,2,2])
+julia> Y = LTR(X, [2,2,2])
 ```
 
 The output `Y` is a (2,2,2)-rank tensor approximating `X`.
@@ -27,25 +27,47 @@ julia> mrank(Y)
 (2, 2, 2)
 ```
 
+Note that `LTR(X, [1,1,1])` retruns the best rank-1 approximation of `X` which minimizes KL divergence.
+You can find the algorithm of LTR in the appendix in the paper.
+
 ## Experiments in the paper
-Our experiments on real and synthetic datasets can be performed from the command line as follows.
+Our experiments on synthetic and real datasets can be performed from the command line as follows.
 ```julia
-$ julia main_real.jl
 $ julia main_synthetic.jl
+$ julia main_real.jl
 ```
+You have to store real dataset `../data` as jld2 files in advanced. To access the files, `data_loader.jl` can be used.
+Please refer to the appendix in the paper for the information on how to obtain these datasets.
 
 Results for synthetic and real datasets obtained by the above commands correspond to Fig. 3(a)(b) and Fig. 3(c)(d), respectively, in our paper.
 Results will be saved in `../result` as jld2 files.
-​
+
 The following commands
 ```julia
 cd plot
 $ julia plot_realdata.jl
 $ julia plot_syntheticadata.jl
 ```
-make png images from jld2 files. The generated pdf files will be saved in `../png`.
+make png images from jld2 files. The generated png files will be saved in `../png`.
 We can modify experimental conditions and plot conditions by editing the file `config.jl`.
-​
 
-Real-world datasets are stored in `../data` as jld2 files. To access the files, `data_loader.jl` can be used.
-​Please refer to the appendix in the paper for the information on how to obtain these three datasets.
+
+## Citation
+If you use LTR in a scientific publication, we would appreciate citations to the following paper:
+* Ghalamkari, K., Sugiyama, M. : **Fast Tucker Rank Reduction for Non-Negative Tensors Using Mean-Field Approximation**, NeurIPS 2021 (to appear).
+
+Bibtex entry:
+```
+@inproceedings{Ghalamkari2021FastTR,
+  Title={Fast Tucker Rank Reduction for Non-Negative Tensors Using Mean-Field Approximation},
+  Author={Ghalamkari, K. and Sugiyama, M.},
+  Booktitle = {Advances in Neural Information Processing Systems 34},
+  Month = {December},
+  Year = {2021}
+}
+```
+
+## Contact
+Author: Kazu Ghalamkari
+Affiliation: National Institute of Informatics, Tokyo, Japan
+E-mail: gkazu@nii.ac.jp
