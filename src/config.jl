@@ -44,7 +44,7 @@ methods = [k for k = keys(methods_flags) if methods_flags[k] == true]
 
 # move to "TLrRR" to top
 sort!(methods)
-methods = insert!( setdiff(methods, ["LTR"]), 1, "TLR" )
+methods = insert!( setdiff(methods, ["LTR"]), 1, "LTR" )
 std_method = "LTR"
 
 # #################################
