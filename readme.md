@@ -1,7 +1,7 @@
 # About Code
 The proposed algorithm is given in `TLrRR.jl`, which is implemented in Julia 1.6.1.
 On the command line, we can use the algorithm as follows.
-```
+```julia
 $ julia
 julia> include("TLrRR.jl")
 julia> X = rand(5,5,5)
