@@ -68,8 +68,6 @@ Bibtex entry:
 ```
 
 ## Contact
-Author: Kazu Ghalamkari
-
-Affiliation: National Institute of Informatics, Tokyo, Japan
-
+Author: Kazu Ghalamkari  
+Affiliation: National Institute of Informatics, Tokyo, Japan  
 E-mail: gkazu@nii.ac.jp
