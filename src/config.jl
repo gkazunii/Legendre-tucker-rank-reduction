@@ -20,36 +20,36 @@ n_digits = 5
 # Real datasets
 datasets = [
             "AttFace",      #(112,92,400)
-            "4DLFD"    #(9,9,512,512,3)
+           #"4DLFD"    #(9,9,512,512,3)
            ]
 sort!(datasets)
 
 dataset_label_dict = Dict(
                    "AttFace" => "AttFace",
-                   "4DLFD" => "4DLFD",
+                   #"4DLFD" => "4DLFD",
                 )
 dataset_label_dict = sort(dataset_label_dict)
 
 
 # approximation methods
 methods_flags = Dict(
-             "TL1RR" => false,
-             "TLrRR" => true,
+             "LT1R" => false,
+             "LTR" => true,
              "NTD_KL" => true,
              "NTD_LS" => true,
              "lraSNTD" => true,
             )
-non_negative_methods = ["TL1RR", "TLrRR", "NTD_KL", "NTD_LS", "lraSNTD"]
+non_negative_methods = ["LT1R", "LTR", "NTD_KL", "NTD_LS", "lraSNTD"]
 methods = [k for k = keys(methods_flags) if methods_flags[k] == true]
 
 # move to "TLrRR" to top
 sort!(methods)
-methods = insert!( setdiff(methods, ["TLrRR"]), 1, "TLrRR" )
-std_method = "TLrRR"
+methods = insert!( setdiff(methods, ["LTR"]), 1, "TLR" )
+std_method = "LTR"
 
-# ##########################
-# Experimental design
-# ##########################
+# #################################
+# Experimental design for real data
+# #################################
 
 plans = Dict( dataset for dataset = zip(datasets, [ [] for i = 1:length(datasets) ] ) )
 # AttFace (112,92,400)
@@ -97,7 +97,7 @@ img_size_wide = (1050, 300)
 colors = palette(:tab20)
 
 colors_dict = Dict(
-                   "TL1RR" => :red,
+                   "LT1R" => :red,
                    "TLrRR" => :red,
                    "NTD_KL" => :black,
                    "NTD_LS" => :blue,
@@ -105,15 +105,15 @@ colors_dict = Dict(
                 )
 
 label_dict = Dict(
-                   "TL1RR" => "TL1RR",
-                   "TLrRR" => "LTD(proposed)",
+                   "LT1R" => "TL1R",
+                   "LTR" => "LTD(proposed)",
                    "NTD_KL" => "NTD_KL",
                    "NTD_LS" => "NTD_LS",
                    "lraSNTD" => "lraSNTD",
                 )
 
 markershapes_dict = Dict(
-                   "TL1RR" => :circle,
+                   "LT1R" => :circle,
                    "TLrRR" => :circle,
                    "NTD_KL" => :rect,
                    "NTD_LS" => :dtriangle,
@@ -121,8 +121,8 @@ markershapes_dict = Dict(
                 )
 
 linetype_dict = Dict(
-                   "TL1RR" => :dashdot,
-                   "TLrRR" => :dashdot,
+                   "LT1R" => :dashdot,
+                   "LTR" => :dashdot,
                    "NTD_KL" => :dashdot,
                    "NTD_LS" => :dot,
                    "lraSNTD" => :dashdot,

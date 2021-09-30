@@ -1,5 +1,32 @@
+using TensorToolbox
+using LinearAlgebra
+using InvertedIndices
 using StatsBase
-include("TL1RR.jl")
+
+"""
+This function gives the best rank-1 approximation of the non-negative tensor `T`
+"""
+function LT1R(T)
+    input_tensor_depth = ndims(T)
+    input_tensor_shape = size(T)
+
+    partial_sums = []
+    one_to_N = [1:input_tensor_depth;]
+    for k=1:input_tensor_depth
+        partial_sum = vec(sum(T, dims=one_to_N[Not(k)]))
+        push!(partial_sums, partial_sum)
+    end
+
+    P = ttt(partial_sums[1], partial_sums[2])
+    for n=3:input_tensor_depth
+        P = ttt(P, partial_sums[n])
+    end
+
+    dev = sum(T)^(input_tensor_depth-1)
+    P .= P ./ dev
+    return P
+end
+
 
 function get_basis_positions(tensor_size, reqrank)
     # Non bingo position become basis for reconstration tensor.
@@ -13,7 +40,15 @@ function get_basis_positions(tensor_size, reqrank)
     return basis_positions
 end
 
-function TLrRR(X, reqrank)
+"""
+Legendre Tucker-rank Reduction,
+proposed by Kazu Ghalamkari and Mahito Sugiyama.
+
+# Aruguments
+- `X`: input non-negative tensor, multi dimensional array.
+- `reqrank` : target Tucker rank, array.
+"""
+function LTR(X, reqrank)
     X = copy(X)
     @assert ndims(X) == length(reqrank)
     D = ndims(X)
@@ -34,7 +69,7 @@ function TLrRR(X, reqrank)
             end
             idx = ntuple( l -> l == d ? (rank1_subtensor_begin:rank1_subtensor_end) : (:), D)
 
-            X[idx...] = TL1RR( X[idx...] )
+            X[idx...] = LT1R( X[idx...] )
         end
     end
     return X

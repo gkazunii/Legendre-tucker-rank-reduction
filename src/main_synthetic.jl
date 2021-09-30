@@ -82,8 +82,6 @@ function run_fix_rank(tensor_sizes, reqrank)
         println("__________________________________________")
     end
 end
-
-
 d = 5
 tensor_size = [30 for i=1:d]
 reqranks = []

@@ -52,5 +52,5 @@ end
 
 datasetname = "AttFace"
 run(datasetname, plans[datasetname])
-datasetname = "4DLFD"
-run(datasetname, plans[datasetname])
+#datasetname = "4DLFD"
+#run(datasetname, plans[datasetname])

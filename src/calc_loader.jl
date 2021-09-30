@@ -1,10 +1,6 @@
 using TensorToolbox
-include("TL1RR.jl")
-include("TLrRR.jl")
+include("LTR.jl")
 include("methods/NTD.jl")
-#include("methods/CP.jl")
-#include("methods/CPAPR.jl")
-#include("methods/HOSVDs.jl")
 include("methods/lraSNTD.jl")
 include("methods/LD/LD.jl")
 
@@ -18,11 +14,11 @@ function tucker_to_cprank(tucker_rank)
 end
 
 function calc(X, method, reqrank)
-    if method == "TL1RR"
+    if method == "LT1R"
         @assert tucker_to_cprank(reqrank) == 1
-        return TL1RR(X)
-    elseif method == "TLrRR"
-        return TLrRR(X, reqrank)
+        return LT1R(X)
+    elseif method == "LTR"
+        return LTR(X, reqrank)
     elseif method == "NTD_KL"
         _, _, Xr = NTD(X, reqrank, cost="KL", init_method=NTD_init, verbose=false)
         return Xr
