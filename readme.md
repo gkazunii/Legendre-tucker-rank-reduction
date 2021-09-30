@@ -1,5 +1,5 @@
-# Legednre Tucker-rank Reduction
-Legendre Tucker-rank Reduction(LTR) is an efficient low-rank approximation algorithm for non-negative tensors. Current implementation supports any order tensors.
+# Legendre Tucker-rank Reduction
+Legendre Tucker-rank Reduction(LTR) is an efficient low-rank approximation algorithm for non-negative tensors. The current implementation supports any order tensors.
 
 * Ghalamkari, K., Sugiyama, M. : **Fast Tucker Rank Reduction for Non-Negative Tensors Using Mean-Field Approximation**, NeurIPS 2021 (to appear).
 
@@ -27,7 +27,7 @@ julia> mrank(Y)
 (2, 2, 2)
 ```
 
-Note that `LTR(X, [1,1,1])` retruns the best rank-1 approximation of `X` which minimizes KL divergence.
+Note that `LTR(X, [1,1,1])` retruns the best rank-1 approximation of `X`, minimizing KL divergence from `X`.
 You can find the algorithm of LTR in the appendix in the paper.
 
 ## Experiments in the paper
@@ -36,8 +36,8 @@ Our experiments on synthetic and real datasets can be performed from the command
 $ julia main_synthetic.jl
 $ julia main_real.jl
 ```
-You have to store real dataset `../data` as jld2 files in advanced. To access the files, `data_loader.jl` can be used.
-Please refer to the appendix in the paper for the information on how to obtain these datasets.
+You have to store real dataset `../data` as jld2 files in advance. To access the files, `data_loader.jl` can be used.
+Please refer to the appendix in the paper for information on how to obtain these datasets.
 
 Results for synthetic and real datasets obtained by the above commands correspond to Fig. 3(a)(b) and Fig. 3(c)(d), respectively, in our paper.
 Results will be saved in `../result` as jld2 files.
@@ -69,5 +69,7 @@ Bibtex entry:
 
 ## Contact
 Author: Kazu Ghalamkari
+
 Affiliation: National Institute of Informatics, Tokyo, Japan
+
 E-mail: gkazu@nii.ac.jp
