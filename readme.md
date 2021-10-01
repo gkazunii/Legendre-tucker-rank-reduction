@@ -5,12 +5,12 @@ Legendre Tucker-rank Reduction(LTR) is an efficient low-rank approximation algor
 
 ## Requirements
 LTR is implemented in Julia 1.6.1.
-We need only `LTR.jl` to run LTR.
+We need only `src/LTR.jl` to run LTR.
 `TensorToolBox` and `InvertedIndices` have to be installed in Julia.
 All other files are for experiments in our paper.
 
 ## Usage
-The proposed algorithm LTR is given in `LTR.jl`.
+The proposed algorithm LTR is given in `src/LTR.jl`.
 On the command line, we can use the algorithm as follows.
 ```julia
 $ julia
