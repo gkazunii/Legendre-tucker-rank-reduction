@@ -13,6 +13,7 @@ All other files are for experiments in our paper.
 The proposed algorithm LTR is given in `src/LTR.jl`.
 On the command line, we can use the algorithm as follows.
 ```julia
+cd src
 $ julia
 julia> include("LTR.jl")
 julia> X = rand(5,5,5)
