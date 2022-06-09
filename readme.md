@@ -1,7 +1,7 @@
 # Legendre Tucker-rank Reduction
 Legendre Tucker-rank Reduction(LTR) is an efficient low-rank approximation algorithm for non-negative tensors. The current implementation supports any order tensors.
 
-* Ghalamkari, K., Sugiyama, M. : **Fast Tucker Rank Reduction for Non-Negative Tensors Using Mean-Field Approximation**, NeurIPS 2021 (to appear). [[arXiv]](https://arxiv.org/abs/2103.02898) [[Slide]](https://mahito.nii.ac.jp/pdf/NeurIPS2021.pdf) [[Poster]](https://mahito.nii.ac.jp/pdf/Ghalamkari_NeurIPS2021_poster.pdf)
+* Ghalamkari, K., Sugiyama, M. : **Fast Tucker Rank Reduction for Non-Negative Tensors Using Mean-Field Approximation**, NeurIPS 2021 (to appear). [[arXiv]](https://arxiv.org/abs/2103.02898) [[Paper]](https://papers.nips.cc/paper/2021/hash/040ca38cefb1d9226d79c05dd25469cb-Abstract.html) [[Slide]](https://mahito.nii.ac.jp/pdf/NeurIPS2021.pdf) [[Poster]](https://mahito.nii.ac.jp/pdf/Ghalamkari_NeurIPS2021_poster.pdf)
 
 ## Requirements
 LTR is implemented in Julia 1.6.1.
